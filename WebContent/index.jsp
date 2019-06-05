@@ -13,5 +13,8 @@
 		上传照片：<input type="file" name="spicture"/><br/>
 		<input type="submit"/>
 	</form>
+	<br/>
+	<a href="DownloadServlet?fileName=time.jpg">time</a>
+	<a href="DownloadServlet?fileName=timg.jpg">timg</a>
 </body>
 </html>
