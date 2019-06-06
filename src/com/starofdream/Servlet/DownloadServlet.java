@@ -2,12 +2,15 @@ package com.starofdream.Servlet;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 /**
  * Servlet implementation class DownloadServlet
@@ -31,7 +34,14 @@ public class DownloadServlet extends HttpServlet {
 		
 		//设置响应头
 		response.addHeader("content-Type", "application/octet-stream");
-		response.addHeader("content-Disposition", "attachment;fileName=" + fileName);
+		
+		//根据请求头信息确定浏览器
+		String agent = request.getHeader("User-Agent");
+		if (agent.toLowerCase().contains("edge")) {
+			response.addHeader("content-Disposition", "attachment;fileName=" + URLEncoder.encode(fileName, "UTF-8"));
+		} else {
+			response.addHeader("content-Disposition", "attachment;fileName=\"" + new String(fileName.getBytes("UTF-8"), "ISO-8859-1") + "\"");
+		}
 		
 		//通过文件地址，将文件通过输入流读到servlet中
 		String path = "/res/" + fileName;

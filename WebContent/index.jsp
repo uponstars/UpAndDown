@@ -14,7 +14,7 @@
 		<input type="submit"/>
 	</form>
 	<br/>
-	<a href="DownloadServlet?fileName=time.jpg">time</a>
+	<a href="DownloadServlet?fileName=中国.jpg">中国</a>
 	<a href="DownloadServlet?fileName=timg.jpg">timg</a>
 </body>
 </html>
