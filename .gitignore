@@ -9,6 +9,11 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+build/
+.project
+.classpath
+WebContent/
+!WebContent/*.jsp
 
 #External tool builders
 .externalToolBuilders/
